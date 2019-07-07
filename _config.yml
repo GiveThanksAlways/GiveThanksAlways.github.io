@@ -1,7 +1,6 @@
 title: Personal Website
 description: Personal Website for blog and projects.
 
-theme: jekyll-theme-cayman
 
 plugins:
   - jekyll-sitemap
