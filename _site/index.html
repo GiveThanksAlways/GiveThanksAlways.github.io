@@ -1,108 +1,103 @@
 <!doctype html>
-<html>
+<html ⚡ lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Home</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <link rel="stylesheet" href="/assets/css/custom_bootstrap.css">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>indexHTML</title>
+    <link rel="canonical" href="https://amp.dev/documentation/guides-and-tutorials/start/create/basic_markup">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="canonical" href="https://givethanksalways.github.io/">
 
-    
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Home | Personal Website</title>
-<meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Home" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Personal Website for blog and projects." />
-<meta property="og:description" content="Personal Website for blog and projects." />
-<link rel="canonical" href="http://localhost:4000/" />
-<meta property="og:url" content="http://localhost:4000/" />
-<meta property="og:site_name" content="Personal Website" />
-<script type="application/ld+json">
-{"name":"Personal Website","description":"Personal Website for blog and projects.","@type":"WebSite","url":"http://localhost:4000/","headline":"Home","@context":"http://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
+    <style amp-custom>
+      body {
+    background-color: white;
+  }
+  amp-img {
+    background-color: rgb(87, 150, 85);
+    border: 1px solid black;
+  }
 
+  .home-button {
+    margin-top: 8px;
+  }
+  .headerbar {
+    height: 50px;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .site-name {
+    flex: 1;
+    margin-left: -36px;
+  }
+  article {
+    margin-top: 50px;
+  }
+
+  .hamburger {
+    padding-left: 10px;
+  }
+  .sidebar {
+    padding: 10px;
+    margin: 0;
+  }
+  .sidebar > li {
+    list-style: none;
+    margin-bottom:10px;
+  }
+  .sidebar a {
+    text-decoration: none;
+  }
+  .close-sidebar {
+    font-size: 1.5em;
+    padding-left: 5px;
+  }
+    </style>
+   
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Open-source framework for publishing content",
+        "datePublished": "2015-10-07T12:02:41Z",
+        "image": [
+          "logo.jpg"
+        ]
+      }
+    </script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
   </head>
-
   <body>
-    
-    <header class="page-header" role="banner">
-            <h1 class="project-name">Home</h1>
-            <h2 class="project-tagline">Personal Website for blog and projects.</h2>
-            <img class="img-fluid" alt="Responsive image" style="width:fit-content; height:fit-content " src="https://img1.looper.com/img/gallery/the-worst-things-yoda-has-ever-done/intro-1523455063.jpg" >
-            
+    <h1>Welcome to the mobile web</h1>
+    <h1>hello world!</h1>
+
+    <header class="headerbar">
+      <div role="button" on="tap:sidebar1.toggle" tabindex="0" class="hamburger">☰</div>
+      <div class="site-name">Personal Website</div>
     </header>
-    
-    <main id="content" class="main-content" role="main">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        
+    <amp-sidebar id="sidebar1" layout="nodisplay" side="left">
+        <div role="button" aria-label="close sidebar" on="tap:sidebar1.toggle" tabindex="0" class="close-sidebar">✕</div>
+        <ul class="sidebar">
+          <li><a href="#">Example 1</a></li>
+          <li><a href="#">Example 2</a></li>
+          <li><a href="#">Example 3</a></li>
+        </ul>
+      </amp-sidebar>
+    <amp-carousel layout="intrinsic" width="300" height="168" type="slides" autoplay delay="2000" loop>
+        <amp-img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Comparison_computational_complexity.svg/1024px-Comparison_computational_complexity.svg.png" width="300" height="168"></amp-img>
+        <amp-img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Comparison_computational_complexity.svg/1024px-Comparison_computational_complexity.svg.png" width="300" height="168"></amp-img>
+        <amp-img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Comparison_computational_complexity.svg/1024px-Comparison_computational_complexity.svg.png" 
+        width="300" height="168"></amp-img>
+      </amp-carousel>
 
-          <li class="nav-item">
-            <a class="nav-link" href="/"> Home </a>
-          </li>
-          
-        
-
-          <li class="nav-item">
-            <a class="nav-link" href="/about.html"> About </a>
-          </li>
-          
-        
-
-          <li class="nav-item">
-            <a class="nav-link" href="/projects.html"> Projects </a>
-          </li>
-          
-        
-
-          <li class="nav-item">
-            <a class="nav-link" href="/blog.html"> Blog </a>
-          </li>
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      
-    </div>
-  </nav>
-
-
-        <h1>hello world!</h1>
-
-
-        <footer class="site-footer">
-    
-        <span class="site-footer-owner"><a href="https://github.com/GiveThanksAlways/GiveThanksAlways.github.io">GiveThanksAlways.github.io</a> is maintained by <a href="https://github.com/GiveThanksAlways">GiveThanksAlways</a>.</span>
-    
-    <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
-</footer>
-      
-    </main>
+    <amp-img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Comparison_computational_complexity.svg/1024px-Comparison_computational_complexity.svg.png" 
+    alt="firstImage" height="512" width="512" layout="intrinsic"></amp-img>
   </body>
 </html>
