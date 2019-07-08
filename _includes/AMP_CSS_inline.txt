@@ -1,3 +1,0 @@
-<style amp-custom="">/*! Bassplate | MIT License | http://github.com/basscss/bassplate */
-    {% include AMP_template.css %}
-</style>
