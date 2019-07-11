@@ -1,0 +1,41 @@
+---
+layout: default
+title: Projects
+---
+<amp-story standalone
+      title="Stories in AMP - Layouts"
+      publisher="AMP Project"
+      publisher-logo-src="https://amp.dev/favicons/coast-228x228.png"
+      poster-portrait-src="https://picsum.photos/300/400"
+      poster-square-src="https://picsum.photos/300/300"
+      poster-landscape-src="https://picsum.photos/400/300">
+
+      <!-- ## Fill -->
+
+      <!-- Images & videos should have a resolution of `720x1280` pixels when using the `fill` layout.-->
+      <amp-story-page id="fill-template-example-2">
+        <amp-story-grid-layer template="fill">
+          <amp-img src="assets/img/Sedona_hike/IMG_0148.jpg" width="720" height="1280" layout="responsive"></amp-img>
+        </amp-story-grid-layer>
+        <amp-story-grid-layer template="vertical">
+                <div class="content">First Page</div>
+              </amp-story-grid-layer>
+      </amp-story-page>
+
+      <!-- ## Vertical -->
+      <!-- The vertical template lays its elements out along the y-axis. Each element takes as much space as it needs. -->
+      {% for item in site.data.projects %}
+      <amp-story-page id="{{item.name}}-story-page">
+        <amp-story-grid-layer template="vertical">
+          <div class="content"> <h1>{{ item.name }}</h1></div>
+          <div class="content"><a href="{{ item.link }}">View Source Code</a></div>
+        </amp-story-grid-layer>
+      </amp-story-page>
+      {% endfor %}
+
+      
+
+      <amp-story-bookend src="https://amp.dev/static/samples/json/bookend.json" layout="nodisplay">
+      </amp-story-bookend>
+
+    </amp-story>
