@@ -26,6 +26,9 @@ title: Projects
       <!-- The vertical template lays its elements out along the y-axis. Each element takes as much space as it needs. -->
       {% for item in site.data.projects %}
       <amp-story-page id="{{item.name}}-story-page">
+          <amp-story-grid-layer template="fill">
+              <amp-img src="assets/img/Sedona_hike/IMG_0155.jpg" width="720" height="1280" layout="responsive"></amp-img>
+            </amp-story-grid-layer>
         <amp-story-grid-layer template="vertical">
           <div class="content"> <h1>{{ item.name }}</h1></div>
           <div class="content"><a href="{{ item.link }}">View Source Code</a></div>
