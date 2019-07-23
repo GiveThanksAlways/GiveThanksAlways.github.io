@@ -1,6 +1,15 @@
 - name: Plinko With Functions
   link: https://github.com/GiveThanksAlways/Object-Oriented-Programming/blob/master/Plinko%20with%20functions/Source.cpp
+  img: assets/img/codeExample.png
+    
 - name: Midterm 2
   link: https://github.com/GiveThanksAlways/Object-Oriented-Programming/blob/master/Midterm%202%20-%20Pass%20by%20value%2C%20pass%20by%20reference/Source.cpp
+  img: assets/img/codeExample.png
+
 - name: Heat Plate Lab
   link: https://github.com/GiveThanksAlways/Object-Oriented-Programming/blob/master/Heat%20Plate%20lab/Source.cpp
+  img: assets/img/codeExample.png
+
+- name: Heat Plate Lab
+  link: https://github.com/GiveThanksAlways/Object-Oriented-Programming/blob/master/Heat%20Plate%20lab/Source.cpp
+  img: assets/img/codeExample.png

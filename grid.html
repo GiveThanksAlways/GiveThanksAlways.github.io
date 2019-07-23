@@ -1,0 +1,28 @@
+---
+layout: default
+title: Grid
+---
+
+<div id="grid" layout=container class="center" style="display:flex; flex-wrap:wrap; justify-content:center;">
+
+    {% for item in site.data.projects %}  
+
+        <a href="{{ item.link }}" class="text-decoration-none">
+            <figure ><amp-img src="{{item.img}}" width="400" height="400" layout=intrinsic ></amp-img>
+                <figcaption style="color:black; display:flex; flex-wrap:wrap; font-size: 2rem; max-width:400px;">
+                    {{item.name}} 
+                </figcaption>
+            </figure>
+        </a>
+
+        {% endfor %} 
+
+
+
+        
+        
+        
+        
+
+</div>
+

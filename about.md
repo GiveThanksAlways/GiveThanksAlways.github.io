@@ -4,4 +4,5 @@ title: About
 ---
 # About page
 
-Currently working on updating this page for my website.
+I am an aspiring data scientist.
+
