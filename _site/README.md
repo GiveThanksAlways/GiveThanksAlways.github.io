@@ -1,7 +1,7 @@
-##Personal Website
+# Personal Website
 
-This is the personal website that I am making to host my portfolio, projects, and blog.
+This is the personal website that I am making to host my portfolio, projects, CV, and blog.
 
 Made using
-- Jekyll
-- Google AMP
+- [x] Jekyll
+- [x] Google AMP

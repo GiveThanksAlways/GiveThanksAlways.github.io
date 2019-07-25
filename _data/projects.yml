@@ -1,15 +1,32 @@
-- name: Plinko With Functions
-  link: https://github.com/GiveThanksAlways/Object-Oriented-Programming/blob/master/Plinko%20with%20functions/Source.cpp
-  img: assets/img/codeExample.png
+- name: Personal Website
+  link: https://github.com/GiveThanksAlways/GiveThanksAlways.github.io
+  img: https://jekyllrb.com/img/logo-2x.png
     
-- name: Midterm 2
-  link: https://github.com/GiveThanksAlways/Object-Oriented-Programming/blob/master/Midterm%202%20-%20Pass%20by%20value%2C%20pass%20by%20reference/Source.cpp
-  img: assets/img/codeExample.png
+- name: Data Structures UCSD
+  link: https://github.com/GiveThanksAlways/Data_Structures_UCSD
+  img: http://digitallearning.ucsd.edu/_images/MOOC-images/algorithms.jpg
 
-- name: Heat Plate Lab
-  link: https://github.com/GiveThanksAlways/Object-Oriented-Programming/blob/master/Heat%20Plate%20lab/Source.cpp
-  img: assets/img/codeExample.png
+- name: Nand to Tetris I
+  link: https://github.com/GiveThanksAlways/Nand2Tetris-Part-1
+  img: assets/img/code_projects/Nand2Tetris.png
 
-- name: Heat Plate Lab
-  link: https://github.com/GiveThanksAlways/Object-Oriented-Programming/blob/master/Heat%20Plate%20lab/Source.cpp
-  img: assets/img/codeExample.png
+- name: Nand to Tetris II
+  link: https://github.com/GiveThanksAlways/Nand2Tetris-Part-2
+  img: assets/img/code_projects/Nand2Tetris.png
+
+- name: Object Oriented Programming
+  link: https://github.com/GiveThanksAlways/Object-Oriented-Programming
+  img: https://miro.medium.com/max/1000/1*YU6BvZKvxivoEnvqxeG5rw.png
+
+- name: Algorithmic Toolbox
+  link: https://github.com/GiveThanksAlways/Algorithmic_toolbox_UCSD
+  img: http://digitallearning.ucsd.edu/_images/MOOC-images/algorithms.jpg
+
+- name: Pi Minecraft + Python
+  link: https://github.com/GiveThanksAlways/minecraft-Python-
+  img: https://www.raspberrypi.org/wp-content/uploads/2011/10/Raspi-PGB001.png
+
+- name: Algorithms on Graphs UCSD
+  link: https://github.com/GiveThanksAlways/UCSD-Algorithms-on-Graphs
+  img: http://digitallearning.ucsd.edu/_images/MOOC-images/algorithms.jpg
+
