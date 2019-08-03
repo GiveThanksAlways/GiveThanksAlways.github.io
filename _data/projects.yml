@@ -1,32 +1,48 @@
 - name: Personal Website
   link: https://github.com/GiveThanksAlways/GiveThanksAlways.github.io
   img: https://jekyllrb.com/img/logo-2x.png
+  width: auto
+  height: auto
     
 - name: Data Structures UCSD
   link: https://github.com/GiveThanksAlways/Data_Structures_UCSD
   img: http://digitallearning.ucsd.edu/_images/MOOC-images/algorithms.jpg
+  width: auto
+  height: auto
 
 - name: Nand to Tetris I
   link: https://github.com/GiveThanksAlways/Nand2Tetris-Part-1
   img: assets/img/code_projects/Nand2Tetris.png
+  width: auto
+  height: auto
 
 - name: Nand to Tetris II
   link: https://github.com/GiveThanksAlways/Nand2Tetris-Part-2
   img: assets/img/code_projects/Nand2Tetris.png
+  width: auto
+  height: auto
 
 - name: Object Oriented Programming
   link: https://github.com/GiveThanksAlways/Object-Oriented-Programming
   img: https://miro.medium.com/max/1000/1*YU6BvZKvxivoEnvqxeG5rw.png
+  width: auto
+  height: auto
 
 - name: Algorithmic Toolbox
   link: https://github.com/GiveThanksAlways/Algorithmic_toolbox_UCSD
   img: http://digitallearning.ucsd.edu/_images/MOOC-images/algorithms.jpg
+  width: auto
+  height: auto
 
 - name: Pi Minecraft + Python
   link: https://github.com/GiveThanksAlways/minecraft-Python-
   img: https://www.raspberrypi.org/wp-content/uploads/2011/10/Raspi-PGB001.png
+  width: auto
+  height: auto
 
 - name: Algorithms on Graphs UCSD
   link: https://github.com/GiveThanksAlways/UCSD-Algorithms-on-Graphs
   img: http://digitallearning.ucsd.edu/_images/MOOC-images/algorithms.jpg
+  width: auto
+  height: auto
 
