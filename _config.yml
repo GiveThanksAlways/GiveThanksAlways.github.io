@@ -5,3 +5,11 @@ description: Personal Website for blog and projects.
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
+
+
+# site variables
+
+linkedin_url: https://www.linkedin.com/in/spencer-willett-53335195/
+facebook_url: https://www.facebook.com/spencer.willett15
+instagram_url: https://www.instagram.com/sp3nc3r180/?hl=en
+GitHub_url: https://github.com/GiveThanksAlways
