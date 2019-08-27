@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "styles.css",
+	"sources": [
+		"styles.scss"
+	],
+	"sourcesContent": [
+		"//@import \"\";\nbody {\n    background-color: white;\n  }\n  amp-img {\n    background-color: gray;\n    border: 1px solid black;\n  }\n"
+	],
+	"names": [],
+	"mappings": "AACA,AAAA,IAAI,CAAC,EACD,gBAAgB,EAAE,KAAK,GACxB;;AACD,AAAA,OAAO,CAAC,EACN,gBAAgB,EAAE,IAAI,EACtB,MAAM,EAAE,eAAe,GACxB"
+}
