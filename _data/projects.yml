@@ -1,3 +1,21 @@
+- name: Data Wrangling
+  link: https://github.com/GiveThanksAlways/Springboard_Data_Science/blob/master/Capstone_1/webscraper_YouTube.ipynb
+  img: https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/883px-Jupyter_logo.svg.png
+  width: auto
+  height: auto
+
+- name: JSON mini assignment
+  link: https://github.com/GiveThanksAlways/Springboard_Data_Science/blob/master/json_mini_project/json_exercise.ipynb
+  img: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/JSON_vector_logo.svg/1200px-JSON_vector_logo.svg.png
+  width: auto
+  height: auto
+
+- name: SQL mini assignment 
+  link: https://github.com/GiveThanksAlways/Springboard_Data_Science/blob/master/SQL_mini_project/sql_project.sql
+  img: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Cloud-SQL-Logo.svg/1024px-Cloud-SQL-Logo.svg.png
+  width: auto 
+  height: auto
+
 - name: Personal Website
   link: https://github.com/GiveThanksAlways/GiveThanksAlways.github.io
   img: https://jekyllrb.com/img/logo-2x.png
