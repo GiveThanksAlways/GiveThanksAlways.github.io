@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  static-website:
+    image: givethanksalwaysgithub:latest
+    build: .
+    ports:
+      - "4000:4000"
+    volumes:
+      - C:/Users/spencerw/projects/givethanksalways/GiveThanksAlways.github.io:/srv/jekyll
