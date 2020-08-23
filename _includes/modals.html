@@ -37,6 +37,12 @@
                                         </strong>
                                     </li>
                                 {% endif %}
+                                {% if post.github-link %}
+                                    <li>GitHub Link:
+                                        <strong><a href="{{ post.github-link }}">{{ post.github-link }}</a>
+                                        </strong>
+                                    </li>
+                                {% endif %}
                             </ul>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>

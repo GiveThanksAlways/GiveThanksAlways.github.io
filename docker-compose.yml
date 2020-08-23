@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  static-website:
+    image: freelancertheme:latest
+    build: .
+    ports:
+      - "4000:4000"
+    volumes:
+      - C:/Users/spencerw/projects/givethanksalways/freelancer-theme:/srv/jekyll
