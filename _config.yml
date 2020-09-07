@@ -42,12 +42,10 @@ footer:
 social:
   - title: linkedin
     url: https://www.linkedin.com/in/spencer-willett-53335195/
-  - title: twitter
-    url: http://twitter.com/BeGrateful5
-  - title: gitlab
-    url: https://gitlab.com/givethanksalways
   - title: github
     url: https://github.com/GiveThanksAlways
+  - title: gitlab
+    url: https://gitlab.com/givethanksalways
 
 # Postal address (add as many lines as necessary)
 address:
