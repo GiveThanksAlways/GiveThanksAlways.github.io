@@ -4,10 +4,10 @@
 
 - name: Python
   percentage: 80
-  color: info
+  color:
 
 - name: C#
   percentage: 70
-  color: success
+  color:
 
 # color: secondary / success / danger / warning / info / light / dark (choose one only, default is primary)

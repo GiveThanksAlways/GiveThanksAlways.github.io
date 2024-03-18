@@ -1,9 +1,13 @@
+- name: Linux
+  percentage: 80
+  color: info
+
 - name: GDB
-  percentage: 95
+  percentage: 70
   color: info
 
 - name: Reverse Engineering
-  percentage: 90
-  color: success
+  percentage: 70
+  color: info
   
 # color: secondary / success / danger / warning / info / light / dark (choose one only, default is primary)
