@@ -1,7 +1,9 @@
-- name: Adobe Photoshop
+- name: GDB
   percentage: 95
   color: info
 
-- name: Adobe Illustrator
+- name: Reverse Engineering
   percentage: 90
   color: success
+  
+# color: secondary / success / danger / warning / info / light / dark (choose one only, default is primary)
