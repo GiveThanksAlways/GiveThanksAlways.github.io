@@ -5,7 +5,7 @@ description         : >-
                       :books: :man_scientist: :microscope:
 baseurl             : "" # Change to empty quotes if you are hosting your site at GiveThanksAlways.github.io directly
 repository          : GiveThanksAlways/GiveThanksAlways.github.io # Change to GiveThanksAlways/GiveThanksAlways.github.io (or remove it if you don't need remote projects)
-remote_theme        : GiveThanksAlways/GiveThanksAlways.github.io
+remote_theme        : YoussefRaafatNasry/portfolYOU # gets the theme. I added my own _includes files to override
 open_new_tab        : false # Opens external URLs in new tab (works for posts, projects and navbar only)
 
 
