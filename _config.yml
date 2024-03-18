@@ -1,12 +1,11 @@
 ### Site Settings ###
-title               : portfolYOU
+title               : portfolio
 description         : >-
-                      I turn coffee :coffee: into code,
-                      use tabs over spaces
-                      and never broke production.
-baseurl             : "/portfolYOU"                     # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
-repository          : YoussefRaafatNasry/portfolYOU     # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
-remote_theme        : YoussefRaafatNasry/portfolYOU
+                      Just making my GitHub pages portfolio
+                      :books: :man_scientist: :microscope:
+baseurl             : ""                     # Change to empty quotes if you are hosting your site at GiveThanksAlways.github.io directly
+repository          : GiveThanksAlways/GiveThanksAlways.github.io     # Change to GiveThanksAlways/GiveThanksAlways.github.io (or remove it if you don't need remote projects)
+remote_theme        : GiveThanksAlways/GiveThanksAlways.github.io
 open_new_tab        : false                             # Opens external URLs in new tab (works for posts, projects and navbar only)
 
 
@@ -25,27 +24,28 @@ nav_exclude:                                            # The following paths ar
 
 ### Author Info ###
 author:
-  name              : John Doe
-  image             : https://i.imgur.com/uyDNQnn.jpg
-  behance           : your_username
-# dribbble          : your_username
-  email             : username@domain.com
+  name              : Spencer Willett
+  image             : https://avatars.githubusercontent.com/u/7727291?v=4
+
+  email             : spencer.willett15@gmail.com
   facebook          : your_username
-  github            : your_username
-# gitlab            : your_username
-# instagram         : your_username
-# kaggle            : your_username
-  linkedin          : your_username
-  medium            : your_username
-# soundcloud        : your_username
-# spotify           : your_username
-# stackoverflow     : your_user_id
-# tumblr            : your_username.tumblr.com
-# twitch            : your_username
-  twitter           : your_username
-# vimeo             : your_username
-# youtube           : your_channel_name
-# keybase           : your_username
+  github            : GiveThanksAlways
+  gitlab            : givethanksalways
+  # instagram         : your_username
+  # kaggle            : your_username
+  linkedin          : spencer-willett-53335195
+  # medium            : your_username
+  # soundcloud        : your_username
+  # spotify           : your_username
+  # stackoverflow     : your_user_id
+  # tumblr            : your_username.tumblr.com
+  # twitch            : your_username
+  twitter           : BeGrateful180
+  # vimeo             : your_username
+  # youtube           : your_channel_name
+  # keybase           : your_username
+  # behance           : your_username
+  # dribbble          : your_username
 
 
 ### Posts ###
