@@ -1,0 +1,44 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/jekyll
+{
+	"name": "Jekyll",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/jekyll:0-bullseye",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {
+	// 	"ghcr.io/devcontainers/features/ruby:1": {}
+	// },
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [
+		4000
+	],
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// These settings are default for when you launch the dev container. You can set more in .vscode/settings.json
+			"settings": {
+				"workbench.colorTheme": "GitHub Dark Default",
+				"workbench.preferredDarkColorTheme": "GitHub Dark Default",
+				"workbench.iconTheme": "vscode-icons",
+				"workbench.colorCustomizations": {
+					"statusBarItem.remoteBackground": "#297183",
+					"statusBarItem.remoteForeground": "#fcfcfc",
+					"activityBar.activeBorder": "#ffffff"
+				},
+				"git.confirmSync": false
+			},
+			"extensions": [
+				"streetsidesoftware.code-spell-checker",
+				"GitHub.github-vscode-theme",
+				"mhutchie.git-graph"
+			]
+		}
+	},
+	// Uncomment the next line to run commands after the container is created.
+	"postCreateCommand": "bundle install"
+	// bundle exec jekyll serve
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}

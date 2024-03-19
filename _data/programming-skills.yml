@@ -1,0 +1,13 @@
+- name: C/C++
+  percentage: 90
+  color:
+
+- name: Python
+  percentage: 80
+  color:
+
+- name: C#
+  percentage: 70
+  color:
+
+# color: secondary / success / danger / warning / info / light / dark (choose one only, default is primary)
