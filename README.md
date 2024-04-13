@@ -24,5 +24,4 @@ make new post
 ./makeNewPost.sh
 ```
 
-
 [favicon maker](https://favicon.io/favicon-converter/)

@@ -6,14 +6,9 @@ color: primary
 description: Just setting up a blog workflow for markdown + jekyll + github pages
 ---
 
-what
+I'm just experimenting with a different workflow using markdown + jekyll + github pages.
 
-# Main title
+I might use this for blogging or I might just use this for projects or mix up both.
 
-ok ok
-
-## what is next
-
-```cpp
-#include <queue>
-```
+- updated blog posts
+- updated website
