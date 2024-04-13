@@ -15,4 +15,13 @@ bundle install
 bundle exec jekyll serve
 ```
 
+## Blog
+
+make new post
+
+```bash
+# will ask for title, then creates a .md file in _posts/ with the correct date format in the filename
+./makeNewPost.sh
+```
+
 [favicon maker](https://favicon.io/favicon-converter/)

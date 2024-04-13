@@ -32,7 +32,10 @@
 			"extensions": [
 				"streetsidesoftware.code-spell-checker",
 				"GitHub.github-vscode-theme",
-				"mhutchie.git-graph"
+				"mhutchie.git-graph",
+				"DavidAnson.vscode-markdownlint",
+				"yzhang.markdown-all-in-one",
+				"Shopify.ruby-lsp"
 			]
 		}
 	},
