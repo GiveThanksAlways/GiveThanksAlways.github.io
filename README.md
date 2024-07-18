@@ -11,6 +11,7 @@ just setting up my portfolio based on [portfolYOU](https://YoussefRaafatNasry.gi
 ```bash
 # ruby -v
 # bundle -v
+# served on http://127.0.0.1:4000/
 bundle install
 bundle exec jekyll serve
 ```
