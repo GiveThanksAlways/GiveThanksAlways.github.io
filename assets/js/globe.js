@@ -3,7 +3,10 @@
  * Military/Advanced Warfare style globe with visitor location markers
  */
 
-// Check if Three.js is loaded
+// Constants
+const MAX_DISPLAYED_VISITORS = 10;
+
+// Check if Three.js is loaded - exit early if not available
 if (typeof THREE === 'undefined') {
   console.error('Three.js library not loaded');
   document.addEventListener('DOMContentLoaded', () => {
@@ -12,7 +15,7 @@ if (typeof THREE === 'undefined') {
       loading.innerHTML = '<span class="loading-text">Error: Unable to load 3D engine. Please refresh or check your connection.</span>';
     }
   });
-}
+} else {
 
 class GlobeVisualization {
   constructor() {
@@ -21,6 +24,7 @@ class GlobeVisualization {
     this.renderer = null;
     this.globe = null;
     this.markers = [];
+    this.pulseRings = []; // Store pulse rings for consolidated animation
     this.raycaster = new THREE.Raycaster();
     this.mouse = new THREE.Vector2();
     this.isRotating = true;
@@ -284,15 +288,8 @@ class GlobeVisualization {
     
     this.globe.add(ring);
 
-    // Animate pulse
-    const animatePulse = () => {
-      const scale = 1 + Math.sin(Date.now() * 0.003 + delay) * 0.5;
-      ring.scale.set(scale, scale, scale);
-      material.opacity = 0.5 - (scale - 1) * 0.8;
-      requestAnimationFrame(animatePulse);
-    };
-    
-    setTimeout(animatePulse, delay * 200);
+    // Store ring data for consolidated animation in main animate loop
+    this.pulseRings.push({ ring, material, delay });
   }
 
   addMarkerBeam(position) {
@@ -341,7 +338,7 @@ class GlobeVisualization {
 
     listElement.innerHTML = '';
     
-    const displayVisitors = visitors.slice(-10).reverse(); // Show last 10 visitors
+    const displayVisitors = visitors.slice(-MAX_DISPLAYED_VISITORS).reverse();
     
     displayVisitors.forEach(visitor => {
       const entry = document.createElement('div');
@@ -403,6 +400,14 @@ class GlobeVisualization {
       this.globe.rotation.y += this.rotationSpeed;
     }
 
+    // Animate pulse rings (consolidated animation)
+    const time = Date.now();
+    this.pulseRings.forEach(({ ring, material, delay }) => {
+      const scale = 1 + Math.sin(time * 0.003 + delay) * 0.5;
+      ring.scale.set(scale, scale, scale);
+      material.opacity = 0.5 - (scale - 1) * 0.8;
+    });
+
     // Render scene
     this.renderer.render(this.scene, this.camera);
   }
@@ -410,7 +415,7 @@ class GlobeVisualization {
 
 // Initialize globe when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  if (typeof THREE !== 'undefined') {
-    new GlobeVisualization();
-  }
+  new GlobeVisualization();
 });
+
+} // End of else block for THREE check
