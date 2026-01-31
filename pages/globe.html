@@ -1,0 +1,96 @@
+---
+layout: null
+title: Global Visitor Map
+permalink: /globe/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Global Visitor Map | Spencer Willett</title>
+  <link rel="shortcut icon" type="image/x-icon" href="{{ '/assets/favicon.ico' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/tracker.css' | relative_url }}">
+</head>
+<body style="margin: 0; padding: 0; overflow: hidden; background: #0a0a0a;">
+  
+  <!-- Loading Overlay -->
+  <div class="loading-overlay">
+    <span class="loading-text">Initializing Global Tracking System...</span>
+  </div>
+
+  <!-- Main Container -->
+  <div class="globe-container">
+    
+    <!-- Three.js Canvas -->
+    <div id="globe-canvas"></div>
+    
+    <!-- Overlay Elements -->
+    <div class="globe-overlay">
+      
+      <!-- Corner Decorations -->
+      <div class="corner-decoration top-left"></div>
+      <div class="corner-decoration top-right"></div>
+      <div class="corner-decoration bottom-left"></div>
+      <div class="corner-decoration bottom-right"></div>
+      
+      <!-- Scan Line Effect -->
+      <div class="scan-line"></div>
+      
+      <!-- HUD Header -->
+      <div class="hud-header">
+        <div class="hud-title">
+          <span>// TACTICAL OVERVIEW</span>
+          <h1>VISITOR TRACKING SYSTEM</h1>
+        </div>
+        <div class="hud-stats">
+          <div class="stat-item">
+            <span class="stat-label">UNIQUE VISITORS:</span>
+            <span class="stat-value" id="visitor-count">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">LOCATIONS TRACKED:</span>
+            <span class="stat-value" id="locations-tracked">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">STATUS:</span>
+            <span class="stat-value" style="color: #00ff41;">● ONLINE</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Side Panel with Visitor List -->
+      <div class="info-panel glass-panel">
+        <h3>Recent Connections</h3>
+        <div class="visitor-list" id="visitor-list">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+      
+      <!-- Targeting Reticle -->
+      <div class="reticle">
+        <div class="reticle-circle"></div>
+      </div>
+      
+      <!-- Footer -->
+      <div class="globe-footer">
+        <a href="{{ '/' | relative_url }}" class="back-link">
+          ← Return to Base
+        </a>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Three.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <!-- Visitor Tracker -->
+  <script src="{{ '/assets/js/visitor-tracker.js' | relative_url }}"></script>
+  
+  <!-- Globe Visualization -->
+  <script src="{{ '/assets/js/globe.js' | relative_url }}"></script>
+
+</body>
+</html>
