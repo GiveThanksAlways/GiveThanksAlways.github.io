@@ -76,8 +76,8 @@ twitch:
   icon  : fab fa-twitch
   color : 6441a5
 
-twitter:
-  url   : https://www.twitter.com/
+x:
+  url   : https://x.com/
   icon  : fa-brands fa-x-twitter
   color : FFFFFF
 
