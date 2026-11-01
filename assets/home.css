@@ -9,7 +9,7 @@ body.home { overflow: hidden; height: 100vh; height: 100dvh; }
   display: block;
   touch-action: none;
   outline: none;
-  opacity: 0.45;
+  opacity: 0.55;
   transition: opacity 0.8s;
 }
 body.flying #scene { opacity: 1; }
@@ -24,22 +24,23 @@ body.flying #scene { opacity: 1; }
   margin-top: clamp(0px, 3vh, 40px);
   padding: 0 16px;
   pointer-events: none;
-  transition: opacity 0.8s;
+  transform-origin: top center;
+  transition: opacity 0.8s, transform 0.8s;
 }
+/* full-width band behind the name; stays below the nav */
 #halo {
   position: absolute;
-  top: -90px;
+  top: -12px;
   left: 50%;
-  width: min(1100px, 100vw);
-  height: calc(100% + 200px);
+  width: 100vw;
+  height: calc(100% + 40px);
   transform: translateX(-50%);
   z-index: -1;
-  opacity: 1;
   transition: opacity 0.8s;
-  -webkit-mask-image: radial-gradient(ellipse at center, #000 45%, transparent 78%);
-  mask-image: radial-gradient(ellipse at center, #000 45%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 60% at center, #000 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 75% 60% at center, #000 55%, transparent 100%);
 }
-body.flying #halo { opacity: 0.15; }
+body.flying #halo { opacity: 0.12; }
 .hero-logo { width: clamp(64px, 9vw, 96px); height: clamp(64px, 9vw, 96px); margin-bottom: 14px; }
 .hero h1 {
   font-size: clamp(34px, 6vw, 60px);
@@ -49,7 +50,7 @@ body.flying #halo { opacity: 0.15; }
   margin: 0 0 24px;
 }
 .hero .social { pointer-events: auto; }
-body.flying .hero { opacity: 0.2; }
+body.flying .hero { opacity: 0.25; transform: scale(0.8); }
 body.flying .hero:hover { opacity: 1; }
 
 /* ---------- launch prompt: appears after a moment, pulses a halo ---------- */
@@ -79,9 +80,9 @@ body.flying .hero:hover { opacity: 1; }
   animation: halo 2s ease-out infinite;
 }
 @keyframes halo {
-  0% { box-shadow: 0 0 0 0 rgba(217, 197, 90, 0.55); }
-  70% { box-shadow: 0 0 0 18px rgba(217, 197, 90, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(217, 197, 90, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(217, 197, 90, 0.8), 0 0 18px rgba(217, 197, 90, 0.35); }
+  70% { box-shadow: 0 0 0 22px rgba(217, 197, 90, 0), 0 0 18px rgba(217, 197, 90, 0.35); }
+  100% { box-shadow: 0 0 0 0 rgba(217, 197, 90, 0), 0 0 18px rgba(217, 197, 90, 0.35); }
 }
 @media (prefers-reduced-motion: reduce) { .prompt.show { animation: none; } }
 
@@ -143,3 +144,6 @@ kbd {
   .hud { font-size: 11px; }
   .bar { width: 60px; }
 }
+
+.prompt:hover { background: rgba(217, 197, 90, 0.15); }
+.hero .social a:hover { color: #f3dc6a; filter: drop-shadow(0 0 10px rgba(217, 197, 90, 0.7)); }

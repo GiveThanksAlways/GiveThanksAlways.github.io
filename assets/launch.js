@@ -359,21 +359,24 @@ function step(dt) {
 }
 
 // ---------- camera ----------
-let idleAz = 0.7;
+let idleAz = 0.7, lookY = 30;
 const offset = new THREE.Vector3(), desired = new THREE.Vector3(), lookAt = new THREE.Vector3();
 function updateCamera(dt) {
   if (!REDUCED_MOTION && s.phase === "pad") idleAz += dt * 0.06;
   const speed = Math.hypot(s.vx, s.vy);
   const az = idleAz + mouseX * 0.8;
   const el = Math.max(0.05, Math.min(1.0, 0.22 - mouseY * 0.25 + Math.min(speed / 400, 0.35)));
-  const dist = (innerWidth < 600 ? 125 : 105) + Math.min(speed * 0.25, 90);
+  // further back on the pad so the name leads; zooms in once the rocket launches
+  const base = s.phase === "pad" ? (innerWidth < 600 ? 175 : 150) : (innerWidth < 600 ? 120 : 100);
+  const dist = base + Math.min(speed * 0.25, 90);
   desired.set(Math.cos(el) * Math.sin(az), Math.sin(el), Math.cos(el) * Math.cos(az)).multiplyScalar(dist);
   offset.lerp(desired, 1 - Math.exp(-dt * 3));
-  lookAt.set(s.x, s.y + 19, 0);
+  lookY += ((s.phase === "pad" ? 30 : 19) - lookY) * (1 - Math.exp(-dt * 2)); // ease the framing at launch
+  lookAt.set(s.x, s.y + lookY, 0);
   camera.position.copy(lookAt).add(offset);
   camera.lookAt(lookAt);
 }
-offset.set(0, 22, 105);
+offset.set(0, 30, 150);
 
 // ---------- HUD ----------
 const $ = (id) => document.getElementById(id);

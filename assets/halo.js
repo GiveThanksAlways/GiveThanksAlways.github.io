@@ -4,7 +4,8 @@
   const canvas = document.getElementById("halo");
   const ctx = canvas?.getContext("2d");
   if (ctx) {
-    const N = 70, LINK = 160, pts = [];
+    const LINK = 150, pts = [];
+    let N = 0;
     const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
     let w = 0, h = 0, dpr = 1;
     function resize() {
@@ -15,8 +16,9 @@
     }
     resize();
     addEventListener("resize", resize);
+    N = Math.max(40, Math.min(130, Math.round((w * h) / 5200))); // density scales with the band size
     for (let i = 0; i < N; i++) {
-      pts.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 40, vy: (Math.random() - 0.5) * 40 });
+      pts.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 60, vy: (Math.random() - 0.5) * 60 });
     }
     let last = performance.now();
     function frame(now) {
