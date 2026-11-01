@@ -5,6 +5,7 @@ import * as THREE from "three";
 // ---------- constants ----------
 const ACCENT = 0xd9c55a, DIM = 0x6b6230, GRID = 0x1b1e23, BG = 0x0a0b0d;
 const G = 9.81, DRY = 1000, FUEL = 900, THRUST = 40000, MDOT = 60, CDA = 1.2;
+const RESERVE = 0.4 * FUEL; // autopilot keeps this much fuel for the landing burn
 const TILT_RATE = 0.7, TILT_MAX = 1.4, THROTTLE_RATE = 0.8;
 const REDUCED_MOTION = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -208,7 +209,7 @@ function pushTrail(x, y) {
 const s = {};
 function reset() {
   Object.assign(s, {
-    phase: "pad", x: 0, y: 0, vx: 0, vy: 0, tilt: 0, throttle: 1, fuel: FUEL,
+    phase: "pad", x: 0, y: 0, vx: 0, vy: 0, tilt: 0, throttle: 1, fuel: FUEL, auto: true, meco: false, onPad: false,
     engine: false, t: 0, apo: 0, phaseTimer: 0, touchdown: 0,
   });
   rocket.visible = true;
@@ -246,6 +247,7 @@ addEventListener("keydown", (e) => {
   e.preventDefault();
   if (e.repeat) return;
   keys.add(k);
+  if (s.phase === "flight" && k !== "r") s.auto = false; // any input hands control to the pilot
   if (k === " ") {
     if (s.phase === "pad") launch();
     else if (s.phase === "flight") s.engine = !s.engine;
@@ -271,6 +273,21 @@ canvas.addEventListener("pointerdown", (e) => {
 });
 addEventListener("pointerup", () => { dragX = null; steerTouch = 0; });
 
+// ---------- autopilot: cut the engine at the fuel reserve, then a hoverslam landing ----------
+function autopilot(dt) {
+  if (!s.meco && s.engine && s.fuel <= RESERVE) { s.meco = true; s.engine = false; }
+  if (!s.meco) return;
+  if (s.vy < 0) {
+    const m = DRY + s.fuel, h = Math.max(s.y, 0.1), v = -s.vy;
+    const need = (v * v) / (2 * h) + G; // deceleration needed to stop exactly at the ground
+    if (!s.engine && need > (THRUST / m) * 0.7) s.engine = true;
+    if (s.engine) s.throttle = Math.max(0, Math.min(1, (need * m) / THRUST));
+  }
+  // kill sideways speed while burning, otherwise drift back upright
+  const target = s.engine ? Math.max(-0.35, Math.min(0.35, -s.vx * 0.03)) : Math.max(-0.5, Math.min(0.5, -s.vx * 0.01));
+  s.tilt += (target - s.tilt) * Math.min(1, dt * 2);
+}
+
 // ---------- physics ----------
 let emitAcc = 0;
 function step(dt) {
@@ -281,6 +298,8 @@ function step(dt) {
 
   if (s.phase === "flight") {
     s.t += dt;
+    if (steer) s.auto = false;
+    if (s.auto) autopilot(dt);
     s.tilt = Math.max(-TILT_MAX, Math.min(TILT_MAX, s.tilt + steer * TILT_RATE * dt));
     const burning = s.engine && s.fuel > 0 && s.throttle > 0;
     const thrust = burning ? THRUST * s.throttle : 0;
@@ -299,7 +318,10 @@ function step(dt) {
       else {
         s.touchdown = Math.hypot(s.vx, s.vy);
         s.y = 0;
-        if (s.touchdown < 8 && Math.abs(s.tilt) < 0.3) { s.phase = "landed"; s.phaseTimer = 0; s.vx = s.vy = 0; }
+        if (s.touchdown < 8 && Math.abs(s.tilt) < 0.3) {
+          s.phase = "landed"; s.phaseTimer = 0; s.vx = s.vy = 0; s.tilt = 0;
+          s.onPad = Math.abs(s.x) < 12;
+        }
         else explode();
       }
     }
@@ -320,6 +342,7 @@ function step(dt) {
     if (trailClock > 0.1) { trailClock = 0; pushTrail(s.x, s.y); }
   } else if (s.phase !== "pad") {
     s.phaseTimer += dt;
+    if (s.onPad) s.x *= Math.exp(-dt * 3); // settle onto the pad
     if (s.phaseTimer > (s.phase === "crashed" ? 3 : 5)) reset();
   }
 
@@ -336,14 +359,14 @@ function updateCamera(dt) {
   const speed = Math.hypot(s.vx, s.vy);
   const az = idleAz + mouseX * 0.8;
   const el = Math.max(0.05, Math.min(1.0, 0.22 - mouseY * 0.25 + Math.min(speed / 400, 0.35)));
-  const dist = (innerWidth < 600 ? 88 : 74) + Math.min(speed * 0.25, 90);
+  const dist = (innerWidth < 600 ? 125 : 105) + Math.min(speed * 0.25, 90);
   desired.set(Math.cos(el) * Math.sin(az), Math.sin(el), Math.cos(el) * Math.cos(az)).multiplyScalar(dist);
   offset.lerp(desired, 1 - Math.exp(-dt * 3));
-  lookAt.set(s.x, s.y + 16, 0);
+  lookAt.set(s.x, s.y + 19, 0);
   camera.position.copy(lookAt).add(offset);
   camera.lookAt(lookAt);
 }
-offset.set(0, 16, 74);
+offset.set(0, 22, 105);
 
 // ---------- HUD ----------
 const $ = (id) => document.getElementById(id);
@@ -363,10 +386,11 @@ function updateHud(dt) {
   hud.apo.textContent = fmtDist(s.apo);
   let status = "PAD · READY";
   if (s.phase === "flight") {
-    if (s.fuel <= 0) status = s.vy > 0 ? "MECO · COASTING" : "MECO · DESCENDING";
+    if (s.auto && s.meco) status = s.vy > 0 ? "MECO · COAST" : s.engine ? "AUTOLAND · LANDING BURN" : "AUTOLAND · ARMED";
+    else if (s.fuel <= 0) status = s.vy > 0 ? "OUT OF FUEL · COASTING" : "OUT OF FUEL · FALLING";
     else if (!s.engine) status = s.vy > 0 ? "ENGINE OFF · COAST" : "ENGINE OFF · FALLING";
     else status = s.vy >= 0 ? "ASCENT" : "POWERED DESCENT";
-  } else if (s.phase === "landed") status = `LANDED · ${s.touchdown.toFixed(1)} m/s`;
+  } else if (s.phase === "landed") status = `${s.onPad ? "LANDED ON THE PAD" : "LANDED"} · ${s.touchdown.toFixed(1)} m/s`;
   else if (s.phase === "crashed") status = "RAPID UNSCHEDULED DISASSEMBLY";
   hud.status.textContent = status;
 }
