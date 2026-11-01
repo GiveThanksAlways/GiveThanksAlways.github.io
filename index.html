@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Spencer Willett</title>
-  <meta name="description" content="Spencer Willett — embedded software engineer. C, Jetson, tinygrad, things that fly.">
+  <meta name="description" content="Spencer Willett. Launch the rocket.">
   <meta property="og:title" content="Spencer Willett">
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/7727291?v=4">
   <link rel="icon" href="/assets/favicon.ico">
@@ -21,20 +21,20 @@
   <canvas id="scene" aria-hidden="true"></canvas>
 
   <header class="site-header">
-    <a class="brand" href="/">
-      <svg viewBox="0 0 24 24"><path d="M12 2 21 7v10l-9 5-9-5V7zM12 2 7 15h10zM3 7l4 8M21 7l-4 8M7 15l5 7 5-7"/></svg>
-      Spencer Willett
+    <a class="brand" href="/" aria-label="Spencer Willett, home">
+      <svg class="logo"><use href="/assets/icons.svg#logo"/></svg>
     </a>
     <nav class="nav">
       <a href="/projects/">Projects</a>
-      <a href="/posts/">Posts</a>
+      <a href="/blog/">Blog</a>
+      <a href="/books/">Books</a>
       <a href="/resume/">Resume</a>
     </nav>
   </header>
 
   <section class="hero">
+    <svg class="logo hero-logo" aria-hidden="true"><use href="/assets/icons.svg#logo"/></svg>
     <h1>Spencer Willett</h1>
-    <p>Embedded software engineer · C, GPUs, things that fly</p>
     <nav class="social" aria-label="Social links">
       <a href="https://github.com/GiveThanksAlways" aria-label="GitHub"><svg><use href="/assets/icons.svg#github"/></svg></a>
       <a href="https://x.com/BeGrateful180" aria-label="X"><svg><use href="/assets/icons.svg#x"/></svg></a>
@@ -43,6 +43,11 @@
       <a href="https://www.linkedin.com/in/spencer-willett" aria-label="LinkedIn"><svg><use href="/assets/icons.svg#linkedin"/></svg></a>
     </nav>
   </section>
+
+  <button class="prompt mono" id="prompt" type="button">
+    <span class="mouse-only">Press <kbd>Space</kbd> to launch</span>
+    <span class="touch-only">Tap to launch</span>
+  </button>
 
   <aside class="hud mono" aria-label="Flight telemetry">
     <div class="hud-status"><span id="status">PAD · READY</span></div>
@@ -57,12 +62,12 @@
     </dl>
   </aside>
 
-  <aside class="controls mono">
+  <aside class="controls mono" id="controls">
     <span><kbd>Space</kbd> launch / engine</span>
     <span><kbd>←</kbd><kbd>→</kbd> tilt</span>
     <span><kbd>↑</kbd><kbd>↓</kbd> throttle</span>
     <span><kbd>R</kbd> reset</span>
-    <span class="touch-hint">tap to launch · drag to steer</span>
+    <span class="touch-only">drag to steer · tap to relaunch</span>
   </aside>
 
   <script type="module" src="/assets/launch.js"></script>

@@ -14,7 +14,7 @@
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{verbatim}
 \usepackage{enumitem}
-\usepackage[pdftex]{hyperref}
+\usepackage[pdftex,hidelinks]{hyperref}
 \usepackage{fancyhdr}
 \usepackage{multicol}
 
@@ -53,7 +53,7 @@
 
 \newcommand{\resumeSubheading}[4]{
   \vspace{-1pt}\item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
     \end{tabular*}\vspace{-5pt}
@@ -65,7 +65,7 @@
 
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[topsep=1pt,itemsep=0pt,parsep=0pt]}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
 %-------------------------------------------
@@ -76,7 +76,7 @@
 
 %----------HEADING-----------------
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-  \textbf{\href{http://sourabhbajaj.com/}{\Large Spencer Willett}} & Email : \href{mailto:spencer.willett15@gmail.com}{spencer.willett15@gmail.com}\\
+  \textbf{\href{https://givethanksalways.github.io/}{\Large Spencer Willett}} & Email : \href{mailto:spencer.willett15@gmail.com}{spencer.willett15@gmail.com}\\
   \href{https://givethanksalways.github.io/}{givethanksalways.github.io} & Mobile : 858-319-9931 \\
 \end{tabular*}
 
@@ -84,42 +84,46 @@
 %-----------EXPERIENCE-----------------
 \section{Experience}
   \resumeSubHeadingListStart
-        \resumeSubheading
-              {Freelance Software Engineer}{San Diego, CA}
-              {Software Engineer}{Sept 2024 - present}
-              \resumeItemListStart
-                \resumeItem{NVIDIA Jetson Dev Kit}
-                    {Implemented secure boot for AI startup}
-                \resumeItem{Wifi and BLE}
-                    {Created and tested wifi and BLE connection methods for the NVIDIA Jetson Dev Kit}
-                \resumeItem{AI Webform Automator}
-                    {Created a chrome extension for a client to upload a PDF file and automatically fill in a webform}
+    \resumeSubheading
+      {TP-Link}{Irvine, CA}
+      {Embedded Software Engineer}{July 2025 - present}
+      \resumeItemListStart
+        \resumeItem{OpenWrt}
+          {embedded system development in C using buildroot and OpenWrt for TP-Link SMB gateway products}
+        \resumeItem{ML \& Arm TrustZone}
+          {Assigned lead role in exploring usage of the machine learning (on/off device) and Arm TrustZone in relation to that}
+      \resumeItemListEnd
 
-              \resumeItemListEnd
-        \resumeSubheading
-              {Qualcomm}{San Diego, CA}
-              {Software Engineer - Secure Systems Group}{May 2022 - Dec 2023}
-              \resumeItemListStart
-                \resumeItem{C Library}
-                    {Built a library in C for use on Embedded Linux and Android. Involved concepts used for IPC.}
-                \resumeItem{Trusted Virtual Machine Development}
-                    {Integrated the C Library I built and updated the unit testing suite used to test the Trusted Virtual Machine}
-                \resumeItem{Test Driven Development}
-                    {Designed C++ code with a Test Driven Development approach using the Google Test framework}
-                \resumeItem{Static Analysis}
-                    {Fixed code security vulnerabilities for multiple repositories using an internal static analysis tool to audit code}
-                \resumeItem{Open Source}
-                  {Contributed actively to both open-source and proprietary code bases}
-                \resumeItem{Gerrit/GitHub}
-                  {Used both Gerrit and GitHub for software collaboration and code reviews}
-              \resumeItemListEnd
-              
+    \resumeSubheading
+      {Freelance Software Engineer}{San Diego, CA}
+      {Software Engineer}{Sept 2024 - July 2025}
+      \resumeItemListStart
+        \resumeItem{NVIDIA Jetson AGX Orin Dev Kit}
+          {Implemented secure boot for AI startup and used LXC containers for on device sandboxing}
+        \resumeItem{AI Web form Automator}
+          {Created a chrome extension for a client to upload a PDF file and automatically fill in a web form}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Qualcomm}{San Diego, CA}
+      {Software Engineer - Secure Systems Group}{May 2022 - Dec 2023}
+      \resumeItemListStart
+        \resumeItem{C Library}
+          {Built a library in C for use on Embedded Linux and Android. Involved concepts used for IPC.}
+        \resumeItem{Trusted Virtual Machine Development}
+          {Integrated the C Library I built and updated the unit testing suite used to test the Trusted Virtual Machine}
+        \resumeItem{Test Driven Development}
+          {Designed C++ code with a Test Driven Development approach using the Google Test framework}
+        \resumeItem{Static Analysis}
+          {Fixed code security vulnerabilities for multiple repositories using an internal static analysis tool to audit code}
+      \resumeItemListEnd
+
     \resumeSubheading
       {Intel}{Chandler, AZ}
       {Software Engineer - Graduate Student Intern}{Nov 2019 - Dec 2021}
       \resumeItemListStart
         \resumeItem{12x Optimization}
-          {Designed and implemented a 12x data processing optimization (using multithreaded code) to reduce the run time from 1 hour to under 5 minutes. (C\#)}
+          {Designed and implemented a 12x data processing optimization (using multithreaded code and a lighter library) to reduce the run time from 1 hour to under 5 minutes. (C\#)}
         \resumeItem{Group Presentation}
           {Gave a presentation to a group of software engineers on development tools and potential uses for the group: Docker, GitLab CI/CD}
         \resumeItem{Docker}
@@ -174,7 +178,7 @@
    \item{
      \textbf{Languages}{: C++, C, Python, Rust}
      \hfill
-     \textbf{Technologies}{: Linux, NVIDIA Jetson Dev Kit, GDB}
+     \textbf{Technologies}{: Linux, Nix, NixOS, GDB, Gerrit, GitHub}
    }
  \resumeSubHeadingListEnd
 

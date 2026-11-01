@@ -13,25 +13,27 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="/">
-      <svg viewBox="0 0 24 24"><path d="M12 2 21 7v10l-9 5-9-5V7zM12 2 7 15h10zM3 7l4 8M21 7l-4 8M7 15l5 7 5-7"/></svg>
+    <a class="brand" href="/" aria-label="Spencer Willett, home">
+      <svg class="logo"><use href="/assets/icons.svg#logo"/></svg>
       Spencer Willett
     </a>
     <nav class="nav">
       <a href="/projects/">Projects</a>
-      <a href="/posts/">Posts</a>
+      <a href="/blog/">Blog</a>
+      <a href="/books/">Books</a>
       <a href="/resume/" aria-current="page">Resume</a>
     </nav>
   </header>
 
   <main class="page">
     <h1>Resume</h1>
-    <p class="lede">Embedded software engineer. C, C++, Python, Linux, ARM TrustZone, Jetson.</p>
     <div class="resume-actions">
       <a class="button" href="/assets/Resume_Spencer_Willett.pdf" download>Download PDF</a>
-      <a class="button" href="/assets/Resume_Spencer_Willett.pdf" target="_blank" rel="noopener">Open in new tab ↗</a>
+      <a class="button" href="/assets/Resume_Spencer_Willett.pdf" target="_blank" rel="noopener">Open PDF ↗</a>
     </div>
-    <iframe class="resume-frame" src="/assets/Resume_Spencer_Willett.pdf#view=FitH&amp;navpanes=0" title="Resume PDF"></iframe>
+    <a class="resume-sheet" href="/assets/Resume_Spencer_Willett.pdf" target="_blank" rel="noopener">
+      <img src="/assets/resume.webp" width="1700" height="2200" alt="Resume of Spencer Willett: embedded software engineer at TP-Link; previously freelance (NVIDIA Jetson), Qualcomm, Intel; M.S. Computer Science, Arizona State; B.S. Physics, BYU.">
+    </a>
   </main>
 
   <footer class="site-footer">

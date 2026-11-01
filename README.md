@@ -8,13 +8,14 @@ python3 -m http.server 4000   # http://localhost:4000
 
 | Path | What |
 |---|---|
-| `index.html`, `assets/launch.js`, `assets/home.css` | Landing page: three.js rocket you can launch/steer/land (three.js from jsDelivr via importmap) |
+| `index.html`, `assets/launch.js`, `assets/home.css` | Landing page: three.js wireframe Starship you can launch/steer/land (three.js from jsDelivr via importmap) |
 | `projects/index.html` | Top projects (edit the list directly) |
-| `posts/index.html`, `assets/posts.js` | X timeline, falling back to pinned post IDs in `posts.js` |
-| `resume/index.html`, `assets/resume.tex` | Resume; rebuild the PDF from the `.tex` and replace `assets/Resume_Spencer_Willett.pdf` |
+| `blog/index.html`, `assets/posts.js` | Embedded X posts; add a post by pasting its ID into `posts.js` |
+| `books/index.html`, `assets/img/books/` | Book recommendations (covers from Open Library) |
+| `resume/index.html`, `assets/resume.tex` | Resume; edit the `.tex`, then run `assets/build-resume.sh` to rebuild the PDF + preview image |
 | `assets/telemetry.js` | Cookieless GoatCounter analytics + public visitor count |
-| `assets/icons.svg` | Social icon sprite (Font Awesome Free brands, CC BY 4.0) |
-| `about/`, `blog/` | Redirects for old URLs |
+| `assets/icons.svg` | Icosahedron logo + social icon sprite (brand icons: Font Awesome Free, CC BY 4.0) |
+| `about/` | Redirect to `/resume/` for the old URL |
 
 ## GoatCounter setup
 

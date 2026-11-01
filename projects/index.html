@@ -13,24 +13,25 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="/">
-      <svg viewBox="0 0 24 24"><path d="M12 2 21 7v10l-9 5-9-5V7zM12 2 7 15h10zM3 7l4 8M21 7l-4 8M7 15l5 7 5-7"/></svg>
+    <a class="brand" href="/" aria-label="Spencer Willett, home">
+      <svg class="logo"><use href="/assets/icons.svg#logo"/></svg>
       Spencer Willett
     </a>
     <nav class="nav">
       <a href="/projects/" aria-current="page">Projects</a>
-      <a href="/posts/">Posts</a>
+      <a href="/blog/">Blog</a>
+      <a href="/books/">Books</a>
       <a href="/resume/">Resume</a>
     </nav>
   </header>
 
   <main class="page">
     <h1>Projects</h1>
-    <p class="lede">A few things I've built. Everything else lives on GitHub.</p>
+    <p class="lede">Three highlights. Everything else lives on GitHub.</p>
 
-    <!-- TODO: candidates to add once public: pico-imu (IMU dead reckoning), SimpleWhisper (on-device Whisper keyboard), FPGA lab -->
+    <!-- TODO: candidates once public: pico-imu (IMU dead reckoning), SimpleWhisper (on-device Whisper keyboard), FPGA lab -->
     <ol class="projects">
-      <li class="project">
+      <li class="project has-media">
         <svg class="glyph" viewBox="0 0 72 72" aria-hidden="true">
           <rect x="14" y="14" width="44" height="44"/><rect x="24" y="24" width="24" height="24"/>
           <path d="M20 14V6M28 14V6M36 14V6M44 14V6M52 14V6M20 58v8M28 58v8M36 58v8M44 58v8M52 58v8M14 20H6M14 28H6M14 36H6M14 44H6M14 52H6M58 20h8M58 28h8M58 36h8M58 44h8M58 52h8M24 24l24 24M48 24 24 48"/>
@@ -42,8 +43,12 @@
           <div class="tags"><span>tinygrad</span><span>Jetson</span><span>NixOS</span><span>Python</span></div>
           <div class="links"><a href="https://github.com/GiveThanksAlways/agx-orin-dev-kit">repo ↗</a></div>
         </div>
+        <figure>
+          <img src="/assets/img/jetson-agx-orin.webp" width="900" height="652" alt="NVIDIA Jetson AGX Orin developer kit and its box" loading="lazy">
+          <figcaption>photo: <a href="https://commons.wikimedia.org/wiki/File:NVidia_Jetson_Orin_AGX.png">Auledas</a>, CC BY 4.0</figcaption>
+        </figure>
       </li>
-      <li class="project">
+      <li class="project has-media">
         <svg class="glyph" viewBox="0 0 72 72" aria-hidden="true">
           <path d="M6 26h16M6 46h16M22 16v40h14a20 20 0 0 0 0-40z"/><circle cx="60" cy="36" r="4"/><path d="M64 36h4"/>
         </svg>
@@ -55,8 +60,12 @@
           <div class="links">
             <a href="https://github.com/GiveThanksAlways/Nand2Tetris-Part-1">part 1 ↗</a>
             <a href="https://github.com/GiveThanksAlways/Nand2Tetris-Part-2">part 2 ↗</a>
+            <a href="https://www.nand2tetris.org/">nand2tetris.org ↗</a>
           </div>
         </div>
+        <figure>
+          <img src="/assets/img/nand2tetris.webp" width="900" height="143" alt="From Nand to Tetris course banner" loading="lazy">
+        </figure>
       </li>
       <li class="project">
         <svg class="glyph" viewBox="0 0 72 72" aria-hidden="true">
@@ -65,8 +74,8 @@
         <div>
           <div class="num">03</div>
           <h2>LeNet hackathon · 2nd place</h2>
-          <p>Led the software side of a hackathon team at ASU, building a LeNet convolutional neural network for image classification.</p>
-          <div class="tags"><span>CNN</span><span>Python</span><span>Jupyter</span></div>
+          <p>Lead software engineer on a hackathon team at ASU, building a LeNet convolutional neural network in Keras.</p>
+          <div class="tags"><span>CNN</span><span>Keras</span><span>Python</span></div>
           <div class="links"><a href="https://github.com/GiveThanksAlways/Action_ML_LeNet">repo ↗</a></div>
         </div>
       </li>

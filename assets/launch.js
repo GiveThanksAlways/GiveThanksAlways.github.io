@@ -42,40 +42,84 @@ fine.position.y = 0.02;
 scene.add(fine);
 scene.add(loop(circle(4), dimMat), loop(circle(7, 96), dimMat), loop(circle(12, 96), dimMat));
 
-const tower = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(1.6, 16, 1.6)), dimMat);
-tower.position.set(-4.2, 8, 0);
+// "Mechazilla"-style launch tower with chopsticks
+const TOWER_X = -4.8, TOWER_H = 34, TW = 2.2;
+const tower = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(TW, TOWER_H, TW)), dimMat);
+tower.position.set(TOWER_X, TOWER_H / 2, 0);
 scene.add(tower);
-for (let y = 2; y < 16; y += 2) {
-  const brace = new THREE.Line(
-    new THREE.BufferGeometry().setFromPoints([
-      new THREE.Vector3(-5, y - 2, 0.8), new THREE.Vector3(-3.4, y, 0.8),
-    ]), dimMat);
-  scene.add(brace);
+const braces = [];
+for (let y = 0; y < TOWER_H - 0.1; y += TW) {
+  for (const z of [TW / 2, -TW / 2]) { // X-bracing on the front and back faces
+    braces.push(TOWER_X - TW / 2, y, z, TOWER_X + TW / 2, y + TW, z);
+    braces.push(TOWER_X + TW / 2, y, z, TOWER_X - TW / 2, y + TW, z);
+  }
 }
-const arm = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(2.6, 0.4, 0.6)), dimMat);
-arm.position.set(-2.1, 10.5, 0);
-scene.add(arm);
+const braceGeom = new THREE.BufferGeometry();
+braceGeom.setAttribute("position", new THREE.Float32BufferAttribute(braces, 3));
+scene.add(new THREE.LineSegments(braceGeom, dimMat));
+const carriage = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(TW + 0.6, 1.4, TW + 0.6)), dimMat);
+carriage.position.set(TOWER_X, 21, 0);
+scene.add(carriage);
+for (const z of [1.3, -1.3]) { // the two chopstick arms
+  const stick = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(5.2, 0.45, 0.35)), dimMat);
+  stick.position.set(TOWER_X + TW / 2 + 2.6, 21, z);
+  scene.add(stick);
+}
 
-// ---------- rocket (lathe profile -> CAD-style edges) ----------
+// ---------- Starship (lathe profile -> CAD-style edges) ----------
+// Super Heavy booster y 0..14, hot-stage ring 14..14.7, Ship 14.7..26.
+const R = 0.9;
 const rocket = new THREE.Group();
+const midMat = new THREE.LineBasicMaterial({ color: 0x8f8240 });
 const profile = [
-  [0.75, 0], [0.45, 0.9], [0.9, 1.1], [0.9, 5], [0.9, 9],
-  [0.8, 10], [0.6, 11], [0.3, 11.8], [0, 12.3],
+  [R, 0], [R, 14], [0.8, 14.12], [0.8, 14.58], [R, 14.7], [R, 22.6],
+  [0.87, 23.3], [0.79, 24.0], [0.65, 24.7], [0.45, 25.3], [0.2, 25.8], [0, 26],
 ].map(([r, y]) => new THREE.Vector2(r, y));
-rocket.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.LatheGeometry(profile, 12), 10), lineMat));
-rocket.add(loop(circle(0.9, 12, 5)));
-for (let k = 0; k < 4; k++) {
-  const fin = loop([
-    new THREE.Vector3(0.9, 3.6, 0), new THREE.Vector3(0.9, 1.2, 0),
-    new THREE.Vector3(2.1, 0.6, 0), new THREE.Vector3(2.1, 1.6, 0),
-  ]);
+rocket.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.LatheGeometry(profile, 12), 20), lineMat));
+for (const y of [2.4, 4.8, 7.2, 9.6, 12, 16.8, 18.9, 21]) rocket.add(loop(circle(R, 24, y), midMat)); // steel barrel rings
+const vents = []; // hot-staging vents
+for (let i = 0; i < 24; i++) {
+  const a = (i / 24) * Math.PI * 2, c = Math.cos(a) * 0.8, z = Math.sin(a) * 0.8;
+  vents.push(c, 14.18, z, c, 14.52, z);
+}
+const ventGeom = new THREE.BufferGeometry();
+ventGeom.setAttribute("position", new THREE.Float32BufferAttribute(vents, 3));
+rocket.add(new THREE.LineSegments(ventGeom, midMat));
+for (let k = 0; k < 4; k++) { // grid fins near the top of the booster
+  const fin = new THREE.Group();
+  const box = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(0.75, 0.22, 0.8)), lineMat);
+  box.position.set(R + 0.375, 13.1, 0);
+  fin.add(box);
+  const g = [];
+  for (const t of [-0.2, 0.2]) g.push(R + 0.375 + t, 13.21, -0.4, R + 0.375 + t, 13.21, 0.4, R, 13.21, t, R + 0.75, 13.21, t);
+  const gg = new THREE.BufferGeometry();
+  gg.setAttribute("position", new THREE.Float32BufferAttribute(g, 3));
+  fin.add(new THREE.LineSegments(gg, midMat));
   fin.rotation.y = (k * Math.PI) / 2 + Math.PI / 4;
   rocket.add(fin);
+}
+const flap = (pts, angle) => {
+  const f = loop(pts.map(([x, y]) => new THREE.Vector3(x, y, 0)));
+  f.rotation.y = angle;
+  rocket.add(f);
+};
+for (const side of [0, Math.PI]) {
+  flap([[0.87, 23.2], [0.6, 24.8], [1.25, 24.3], [1.5, 23.4]], side);          // forward flaps
+  flap([[R, 17.8], [R, 14.9], [1.95, 15.0], [1.95, 16.6]], side);               // aft flaps
+}
+const engines = [[0, 0.25, 3], [0.66, 0.11, 10]]; // [ring radius, engine radius, count]: 3 inner + 10 outer Raptors
+for (const [rr, er, n] of engines) {
+  for (let i = 0; i < n; i++) {
+    const a = (i / n) * Math.PI * 2 + 0.3;
+    const e = loop(circle(rr === 0 ? 0.12 : er, 12, -0.02));
+    e.position.set(rr === 0 ? Math.cos(a) * er : Math.cos(a) * rr, 0, rr === 0 ? Math.sin(a) * er : Math.sin(a) * rr);
+    rocket.add(e);
+  }
 }
 scene.add(rocket);
 
 // ---------- exhaust particles ----------
-const N_EX = 900;
+const N_EX = 1600;
 const exPos = new Float32Array(N_EX * 3).fill(0);
 const exCol = new Float32Array(N_EX * 3).fill(0);
 const exVel = new Float32Array(N_EX * 3);
@@ -170,11 +214,17 @@ function reset() {
   rocket.visible = true;
   trailN = 0; trailGeom.setDrawRange(0, 0);
   document.body.classList.remove("flying");
+  clearTimeout(promptTimer); // nudge visitors toward the controls after a moment on the pad
+  promptTimer = setTimeout(() => s.phase === "pad" && prompt.classList.add("show"), 2500);
 }
+const prompt = document.getElementById("prompt");
+let promptTimer;
+prompt.addEventListener("click", () => launch());
 reset();
 
 function launch() {
   if (s.phase !== "pad") return;
+  prompt.classList.remove("show");
   s.phase = "flight"; s.engine = true;
   document.body.classList.add("flying");
 }
@@ -182,7 +232,7 @@ function explode() {
   s.phase = "crashed"; s.phaseTimer = 0; rocket.visible = false;
   for (let k = 0; k < 300; k++) {
     const a = Math.random() * Math.PI * 2, e = Math.random() * Math.PI * 0.5, v = 8 + Math.random() * 25;
-    emit(s.x, 1, Math.cos(a) * Math.cos(e) * v, Math.sin(e) * v, Math.sin(a) * Math.cos(e) * v, 0.8 + Math.random() * 1.4);
+    emit(s.x, 1 + Math.random() * 10, Math.cos(a) * Math.cos(e) * v, Math.sin(e) * v, Math.sin(a) * Math.cos(e) * v, 0.8 + Math.random() * 1.4);
   }
 }
 
@@ -255,14 +305,15 @@ function step(dt) {
     }
 
     if (burning) {
-      emitAcc += dt * 700 * s.throttle;
+      emitAcc += dt * 1100 * s.throttle;
       const dx = -Math.sin(s.tilt), dy = -Math.cos(s.tilt);
       while (emitAcc >= 1) {
         emitAcc--;
-        const v = 35 + Math.random() * 15, j = (Math.random() - 0.5) * 6;
-        emit(s.x + dx * 0.3, s.y + dy * 0.3,
-          s.vx + dx * v - dy * j, s.vy + dy * v + dx * j, (Math.random() - 0.5) * 6,
-          0.4 + Math.random() * 0.6);
+        const off = (Math.random() - 0.5) * 1.4; // spread across the engine cluster
+        const v = 35 + Math.random() * 15, j = (Math.random() - 0.5) * 7;
+        emit(s.x + dx * 0.3 - dy * off, s.y + dy * 0.3 + dx * off,
+          s.vx + dx * v - dy * j, s.vy + dy * v + dx * j, (Math.random() - 0.5) * 7,
+          0.4 + Math.random() * 0.7);
       }
     }
     trailClock += dt;
@@ -285,14 +336,14 @@ function updateCamera(dt) {
   const speed = Math.hypot(s.vx, s.vy);
   const az = idleAz + mouseX * 0.8;
   const el = Math.max(0.05, Math.min(1.0, 0.22 - mouseY * 0.25 + Math.min(speed / 400, 0.35)));
-  const dist = (innerWidth < 600 ? 60 : 44) + Math.min(speed * 0.25, 90);
+  const dist = (innerWidth < 600 ? 88 : 74) + Math.min(speed * 0.25, 90);
   desired.set(Math.cos(el) * Math.sin(az), Math.sin(el), Math.cos(el) * Math.cos(az)).multiplyScalar(dist);
   offset.lerp(desired, 1 - Math.exp(-dt * 3));
-  lookAt.set(s.x, s.y + 9, 0);
+  lookAt.set(s.x, s.y + 16, 0);
   camera.position.copy(lookAt).add(offset);
   camera.lookAt(lookAt);
 }
-offset.set(0, 10, 44);
+offset.set(0, 16, 74);
 
 // ---------- HUD ----------
 const $ = (id) => document.getElementById(id);
