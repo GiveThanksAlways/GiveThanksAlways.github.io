@@ -83,7 +83,7 @@ body.flying .hero:hover { opacity: 1; }
 .hud dt { letter-spacing: 0.08em; }
 .hud dd { margin: 0; color: var(--fg); font-variant-numeric: tabular-nums; min-width: 9ch; }
 .bar { display: inline-block; position: relative; width: 80px; height: 6px; border: 1px solid var(--accent-dim); vertical-align: middle; }
-.bar::after { content: ""; position: absolute; left: 40%; top: -3px; bottom: -3px; border-left: 1px solid var(--fg); } /* landing reserve */
+.bar::after { content: ""; position: absolute; left: 45%; top: -3px; bottom: -3px; border-left: 1px solid var(--fg); } /* landing reserve */
 .bar i { display: block; height: 100%; width: 100%; background: var(--accent); }
 
 .controls {

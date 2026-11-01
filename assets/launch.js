@@ -5,7 +5,7 @@ import * as THREE from "three";
 // ---------- constants ----------
 const ACCENT = 0xd9c55a, DIM = 0x6b6230, GRID = 0x1b1e23, BG = 0x0a0b0d;
 const G = 9.81, DRY = 1000, FUEL = 900, THRUST = 40000, MDOT = 60, CDA = 1.2;
-const RESERVE = 0.4 * FUEL; // autopilot keeps this much fuel for the landing burn
+const RESERVE = 0.45 * FUEL; // autopilot keeps this much fuel for the landing burn
 const TILT_RATE = 0.7, TILT_MAX = 1.4, THROTTLE_RATE = 0.8;
 const REDUCED_MOTION = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -216,7 +216,7 @@ function reset() {
   trailN = 0; trailGeom.setDrawRange(0, 0);
   document.body.classList.remove("flying");
   clearTimeout(promptTimer); // nudge visitors toward the controls after a moment on the pad
-  promptTimer = setTimeout(() => s.phase === "pad" && prompt.classList.add("show"), 2500);
+  promptTimer = setTimeout(() => s.phase === "pad" && prompt.classList.add("show"), 800);
 }
 const prompt = document.getElementById("prompt");
 let promptTimer;
@@ -278,10 +278,15 @@ function autopilot(dt) {
   if (!s.meco && s.engine && s.fuel <= RESERVE) { s.meco = true; s.engine = false; }
   if (!s.meco) return;
   if (s.vy < 0) {
-    const m = DRY + s.fuel, h = Math.max(s.y, 0.1), v = -s.vy;
-    const need = (v * v) / (2 * h) + G; // deceleration needed to stop exactly at the ground
-    if (!s.engine && need > (THRUST / m) * 0.7) s.engine = true;
-    if (s.engine) s.throttle = Math.max(0, Math.min(1, (need * m) / THRUST));
+    const m = DRY + s.fuel, v = -s.vy;
+    if (s.y > 4) { // hoverslam: deceleration needed to stop 3 m above the pad
+      const need = (v * v) / (2 * (s.y - 3)) + G;
+      if (!s.engine && need > (THRUST / m) * 0.7) s.engine = true;
+      if (s.engine) s.throttle = Math.max(0, Math.min(1, (need * m) / THRUST));
+    } else { // final few meters: settle down at ~1 m/s
+      s.engine = true;
+      s.throttle = Math.max(0, Math.min(1, ((G - (s.vy + 1) * 3) * m) / THRUST));
+    }
   }
   // kill sideways speed while burning, otherwise drift back upright
   const target = s.engine ? Math.max(-0.35, Math.min(0.35, -s.vx * 0.03)) : Math.max(-0.5, Math.min(0.5, -s.vx * 0.01));
