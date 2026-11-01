@@ -8,7 +8,7 @@ python3 -m http.server 4000   # http://localhost:4000
 
 | Path | What |
 |---|---|
-| `index.html`, `assets/launch.js`, `assets/home.css` | Landing page: three.js wireframe Starship you can launch/steer/land (three.js from jsDelivr via importmap) |
+| `index.html`, `assets/home.css`, `assets/vendor/particleground.js` | Landing page: gold particle-line background ([particleground](https://github.com/jnicol/particleground), MIT) behind the logo and social links |
 | `projects/index.html` | Top projects (edit the list directly) |
 | `blog/index.html`, `assets/posts.js` | Embedded X posts; add a post by pasting its ID into `posts.js` |
 | `books/index.html`, `assets/img/books/` | Book recommendations (covers from Open Library) |

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Spencer Willett</title>
-  <meta name="description" content="Spencer Willett. Launch the rocket.">
+  <meta name="description" content="Spencer Willett: projects, talks, books and resume.">
   <meta property="og:title" content="Spencer Willett">
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/7727291?v=4">
   <link rel="icon" href="/assets/favicon.ico">
@@ -13,16 +13,12 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="/assets/site.css">
   <link rel="stylesheet" href="/assets/home.css">
-  <script type="importmap">
-    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js" } }
-  </script>
 </head>
 <body class="home">
-  <canvas id="scene" aria-hidden="true"></canvas>
-
   <header class="site-header">
     <a class="brand" href="/" aria-label="Spencer Willett, home">
       <svg class="logo"><use href="/assets/icons.svg#logo"/></svg>
+      Spencer Willett
     </a>
     <nav class="nav">
       <a href="/projects/">Projects</a>
@@ -32,50 +28,42 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <canvas id="halo" aria-hidden="true"></canvas>
-    <svg class="logo hero-logo" aria-hidden="true"><use href="/assets/icons.svg#logo"/></svg>
-    <h1>Spencer Willett</h1>
-    <nav class="social" aria-label="Social links">
+  <main class="landing">
+    <section id="particles" aria-label="Spencer Willett">
+      <div class="intro">
+        <div class="emblem"><svg class="logo"><use href="/assets/icons.svg#logo"/></svg></div>
+        <nav class="social" aria-label="Social links">
+          <a href="https://github.com/GiveThanksAlways" aria-label="GitHub"><svg><use href="/assets/icons.svg#github"/></svg></a>
+          <a href="https://x.com/BeGrateful180" aria-label="X"><svg><use href="/assets/icons.svg#x"/></svg></a>
+          <a href="https://www.youtube.com/@givethanksalways180" aria-label="YouTube"><svg><use href="/assets/icons.svg#youtube"/></svg></a>
+          <a href="https://www.twitch.tv/givethanksalways180" aria-label="Twitch"><svg><use href="/assets/icons.svg#twitch"/></svg></a>
+          <a href="https://www.linkedin.com/in/spencer-willett" aria-label="LinkedIn"><svg><use href="/assets/icons.svg#linkedin"/></svg></a>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <nav class="social small" aria-label="Social links">
       <a href="https://github.com/GiveThanksAlways" aria-label="GitHub"><svg><use href="/assets/icons.svg#github"/></svg></a>
       <a href="https://x.com/BeGrateful180" aria-label="X"><svg><use href="/assets/icons.svg#x"/></svg></a>
       <a href="https://www.youtube.com/@givethanksalways180" aria-label="YouTube"><svg><use href="/assets/icons.svg#youtube"/></svg></a>
       <a href="https://www.twitch.tv/givethanksalways180" aria-label="Twitch"><svg><use href="/assets/icons.svg#twitch"/></svg></a>
       <a href="https://www.linkedin.com/in/spencer-willett" aria-label="LinkedIn"><svg><use href="/assets/icons.svg#linkedin"/></svg></a>
     </nav>
-  </section>
-
-  <button class="prompt mono" id="prompt" type="button">
-    <span class="mouse-only">Press <kbd>Space</kbd> to launch · autopilot</span>
-    <span class="touch-only">Tap to launch · autopilot</span>
-  </button>
-
-  <aside class="hud mono" aria-label="Flight telemetry">
-    <div class="hud-status"><span id="status">PAD · READY</span></div>
-    <dl>
-      <dt>T+</dt><dd id="t">00:00.0</dd>
-      <dt>ALT</dt><dd id="alt">0 m</dd>
-      <dt>VEL</dt><dd id="vel">0 m/s</dd>
-      <dt>THR</dt><dd id="thr">100%</dd>
-      <dt>FUEL</dt><dd><span class="bar"><i id="fuel"></i></span></dd>
-      <dt>APO</dt><dd id="apo">0 m</dd>
-      <dt>VISITORS</dt><dd data-visitors>…</dd>
-    </dl>
-  </aside>
-
-  <aside class="controls mono" id="controls">
-    <span><kbd>Space</kbd> launch / engine</span>
-    <span><kbd>←</kbd><kbd>→</kbd> tilt</span>
-    <span><kbd>↑</kbd><kbd>↓</kbd> throttle</span>
-    <span><kbd>R</kbd> reset</span>
-    <span class="hint">any key takes manual control</span>
-    <span class="touch-only">drag to take manual control</span>
-  </aside>
-
-  <a class="made-with mono" href="https://claude.com/claude-code">vibe coded with Claude Code · Opus 5.5</a>
-
-  <script type="module" src="/assets/launch.js"></script>
-  <script src="/assets/halo.js" defer></script>
+    <span>visitors · <span data-visitors>…</span></span>
+    <a class="made-with" href="https://claude.com/claude-code">vibe coded with Claude Code · Opus 5.5</a>
+  </footer>
+  <script src="/assets/vendor/particleground.js"></script>
+  <script>
+    // Gold line constellation behind the emblem (particleground by Jonathan Nicol, MIT).
+    particleground(document.getElementById("particles"), {
+      dotColor: "#bdb55c",
+      lineColor: "#bdb55c",
+      particleRadius: 0,
+      lineWidth: 5,
+    });
+  </script>
   <script src="/assets/telemetry.js" defer></script>
 </body>
 </html>
