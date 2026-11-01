@@ -1,6 +1,6 @@
 # givethanksalways.github.io
 
-Personal site. Plain static HTML/CSS/JS, no build step; GitHub Pages serves it as-is (`.nojekyll`).
+Personal site. Plain static HTML/CSS/JS, no build step; GitHub Pages deploys the `production` branch as-is (`.nojekyll`); keep `master` in sync.
 
 ```bash
 python3 -m http.server 4000   # http://localhost:4000
