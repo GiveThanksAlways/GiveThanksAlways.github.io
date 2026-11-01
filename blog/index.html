@@ -28,7 +28,20 @@
   <main class="page">
     <h1>Blog</h1>
     <p class="lede">I mostly write on X.</p>
-    <a class="button" href="https://x.com/BeGrateful180"><svg><use href="/assets/icons.svg#x"/></svg>Follow @BeGrateful180</a>
+
+    <a class="x-card" href="https://x.com/BeGrateful180">
+      <svg class="x-mark"><use href="/assets/icons.svg#x"/></svg>
+      <span class="x-who"><strong>Spencer Willett</strong><span>@BeGrateful180</span></span>
+      <span class="button">Follow on X ↗</span>
+    </a>
+
+    <!-- Live profile timeline. X only renders this for some (usually logged-in) visitors;
+         posts.js removes it if it hasn't appeared after a few seconds. -->
+    <section class="timeline" id="timeline">
+      <a class="twitter-timeline" data-theme="dark" data-dnt="true" data-height="900"
+         data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/BeGrateful180"></a>
+    </section>
+
     <section class="feed" id="feed" aria-live="polite"></section>
   </main>
 
@@ -36,8 +49,8 @@
     <nav class="social small" aria-label="Social links">
       <a href="https://github.com/GiveThanksAlways" aria-label="GitHub"><svg><use href="/assets/icons.svg#github"/></svg></a>
       <a href="https://x.com/BeGrateful180" aria-label="X"><svg><use href="/assets/icons.svg#x"/></svg></a>
-      <a href="https://www.twitch.tv/givethanksalways180" aria-label="Twitch"><svg><use href="/assets/icons.svg#twitch"/></svg></a>
       <a href="https://www.youtube.com/@givethanksalways180" aria-label="YouTube"><svg><use href="/assets/icons.svg#youtube"/></svg></a>
+      <a href="https://www.twitch.tv/givethanksalways180" aria-label="Twitch"><svg><use href="/assets/icons.svg#twitch"/></svg></a>
       <a href="https://www.linkedin.com/in/spencer-willett" aria-label="LinkedIn"><svg><use href="/assets/icons.svg#linkedin"/></svg></a>
     </nav>
     <span>visitors · <span data-visitors>…</span></span>

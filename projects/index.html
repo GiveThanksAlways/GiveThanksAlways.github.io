@@ -29,6 +29,21 @@
     <h1>Projects</h1>
     <p class="lede">Three highlights. Everything else lives on GitHub.</p>
 
+    <section class="talk">
+      <div class="num">TALK · PLANETNIX 2026</div>
+      <h2>Running tinygrad on the NVIDIA Jetson: talking to the GPU without CUDA</h2>
+      <button class="video" type="button" data-video="CkFl6he7JwU" aria-label="Play the PlanetNix 2026 talk">
+        <img src="/assets/img/planetnix-talk.webp" width="960" height="540" alt="Spencer Willett presenting at PlanetNix 2026" loading="lazy">
+        <span class="play" aria-hidden="true"></span>
+      </button>
+      <p>From tinygrad's computation graph to PTX to a cubin, then straight to the GPU through raw ioctls (GPFIFO, QMDs, MMIO) instead of CUDA. Also: standing it up on NixOS/JetPack, a drone dead-reckoning demo (IMU → temporal CNN + EKF), benchmarks against PyTorch and TensorRT, and porting tinygrad's NV backend to Tegra.</p>
+      <div class="links">
+        <a href="https://youtu.be/CkFl6he7JwU">watch on YouTube ↗</a>
+        <a href="https://docs.google.com/presentation/d/19xHB1MYYi9ymqYTc1L_TDDKvYxkP46PQeEPb4mX5QQA/edit?usp=sharing">slides ↗</a>
+        <a href="https://planetnix.com/2026/speakers">PlanetNix speakers ↗</a>
+      </div>
+    </section>
+
     <!-- TODO: candidates once public: pico-imu (IMU dead reckoning), SimpleWhisper (on-device Whisper keyboard), FPGA lab -->
     <ol class="projects">
       <li class="project has-media">
@@ -87,12 +102,26 @@
     <nav class="social small" aria-label="Social links">
       <a href="https://github.com/GiveThanksAlways" aria-label="GitHub"><svg><use href="/assets/icons.svg#github"/></svg></a>
       <a href="https://x.com/BeGrateful180" aria-label="X"><svg><use href="/assets/icons.svg#x"/></svg></a>
-      <a href="https://www.twitch.tv/givethanksalways180" aria-label="Twitch"><svg><use href="/assets/icons.svg#twitch"/></svg></a>
       <a href="https://www.youtube.com/@givethanksalways180" aria-label="YouTube"><svg><use href="/assets/icons.svg#youtube"/></svg></a>
+      <a href="https://www.twitch.tv/givethanksalways180" aria-label="Twitch"><svg><use href="/assets/icons.svg#twitch"/></svg></a>
       <a href="https://www.linkedin.com/in/spencer-willett" aria-label="LinkedIn"><svg><use href="/assets/icons.svg#linkedin"/></svg></a>
     </nav>
     <span>visitors · <span data-visitors>…</span></span>
   </footer>
   <script src="/assets/telemetry.js" defer></script>
+  <script>
+    // Load YouTube only when someone presses play (privacy-friendly youtube-nocookie domain).
+    document.querySelectorAll(".video").forEach((b) => b.addEventListener("click", () => {
+      const f = document.createElement("iframe");
+      f.src = `https://www.youtube-nocookie.com/embed/${b.dataset.video}?autoplay=1`;
+      f.title = b.getAttribute("aria-label");
+      f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+      f.allowFullscreen = true;
+      const wrap = document.createElement("div");
+      wrap.className = "video";
+      wrap.appendChild(f);
+      b.replaceWith(wrap);
+    }));
+  </script>
 </body>
 </html>

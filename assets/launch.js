@@ -49,10 +49,12 @@ const tower = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeomet
 tower.position.set(TOWER_X, TOWER_H / 2, 0);
 scene.add(tower);
 const braces = [];
-for (let y = 0; y < TOWER_H - 0.1; y += TW) {
+const BAYS = Math.round(TOWER_H / TW), BAY = TOWER_H / BAYS; // whole bays, so the top lines up
+for (let i = 0; i < BAYS; i++) {
+  const y = i * BAY;
   for (const z of [TW / 2, -TW / 2]) { // X-bracing on the front and back faces
-    braces.push(TOWER_X - TW / 2, y, z, TOWER_X + TW / 2, y + TW, z);
-    braces.push(TOWER_X + TW / 2, y, z, TOWER_X - TW / 2, y + TW, z);
+    braces.push(TOWER_X - TW / 2, y, z, TOWER_X + TW / 2, y + BAY, z);
+    braces.push(TOWER_X + TW / 2, y, z, TOWER_X - TW / 2, y + BAY, z);
   }
 }
 const braceGeom = new THREE.BufferGeometry();
