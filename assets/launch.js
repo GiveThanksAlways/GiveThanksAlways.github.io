@@ -5,7 +5,7 @@ import * as THREE from "three";
 // ---------- constants ----------
 const ACCENT = 0xd9c55a, DIM = 0x6b6230, GRID = 0x1b1e23, BG = 0x0a0b0d;
 const G = 9.81, DRY = 1000, FUEL = 900, THRUST = 40000, MDOT = 60, CDA = 1.2;
-const RESERVE = 0.45 * FUEL; // autopilot keeps this much fuel for the landing burn
+const HOP_BURN = 2; // autopilot: seconds of ascent burn before cutting the engine for the landing
 const TILT_RATE = 0.7, TILT_MAX = 1.4, THROTTLE_RATE = 0.8;
 const REDUCED_MOTION = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -275,9 +275,9 @@ canvas.addEventListener("pointerdown", (e) => {
 });
 addEventListener("pointerup", () => { dragX = null; steerTouch = 0; });
 
-// ---------- autopilot: cut the engine at the fuel reserve, then a hoverslam landing ----------
+// ---------- autopilot: a short hop, engine cut, then a hoverslam landing ----------
 function autopilot(dt) {
-  if (!s.meco && s.engine && s.fuel <= RESERVE) { s.meco = true; s.engine = false; }
+  if (!s.meco && s.t >= HOP_BURN) { s.meco = true; s.engine = false; }
   if (!s.meco) return;
   if (s.vy < 0) {
     const m = DRY + s.fuel, v = -s.vy;
@@ -396,7 +396,8 @@ function updateHud(dt) {
   hud.apo.textContent = fmtDist(s.apo);
   let status = "PAD · READY";
   if (s.phase === "flight") {
-    if (s.auto && s.meco) status = s.vy > 0 ? "MECO · COAST" : s.engine ? "AUTOLAND · LANDING BURN" : "AUTOLAND · ARMED";
+    if (s.auto && !s.meco) status = "AUTOPILOT · ASCENT";
+    else if (s.auto) status = s.vy > 0 ? "AUTOPILOT · ENGINE CUT" : s.engine ? "AUTOPILOT · LANDING BURN" : "AUTOPILOT · FALLING";
     else if (s.fuel <= 0) status = s.vy > 0 ? "OUT OF FUEL · COASTING" : "OUT OF FUEL · FALLING";
     else if (!s.engine) status = s.vy > 0 ? "ENGINE OFF · COAST" : "ENGINE OFF · FALLING";
     else status = s.vy >= 0 ? "ASCENT" : "POWERED DESCENT";

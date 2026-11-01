@@ -46,8 +46,8 @@
   </section>
 
   <button class="prompt mono" id="prompt" type="button">
-    <span class="mouse-only">Press <kbd>Space</kbd> to launch</span>
-    <span class="touch-only">Tap to launch</span>
+    <span class="mouse-only">Press <kbd>Space</kbd> to launch · autopilot</span>
+    <span class="touch-only">Tap to launch · autopilot</span>
   </button>
 
   <aside class="hud mono" aria-label="Flight telemetry">
@@ -68,9 +68,11 @@
     <span><kbd>←</kbd><kbd>→</kbd> tilt</span>
     <span><kbd>↑</kbd><kbd>↓</kbd> throttle</span>
     <span><kbd>R</kbd> reset</span>
-    <span class="hint">hands off → autopilot lands it</span>
-    <span class="touch-only">hands off → autopilot lands it</span>
+    <span class="hint">any key takes manual control</span>
+    <span class="touch-only">drag to take manual control</span>
   </aside>
+
+  <a class="made-with mono" href="https://claude.com/claude-code">vibe coded with Claude Code · Opus 5.5</a>
 
   <script type="module" src="/assets/launch.js"></script>
   <script src="/assets/halo.js" defer></script>

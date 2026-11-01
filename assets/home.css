@@ -101,7 +101,6 @@ body.flying .hero:hover { opacity: 1; }
 .hud dt { letter-spacing: 0.08em; }
 .hud dd { margin: 0; color: var(--fg); font-variant-numeric: tabular-nums; min-width: 9ch; }
 .bar { display: inline-block; position: relative; width: 80px; height: 6px; border: 1px solid var(--accent-dim); vertical-align: middle; }
-.bar::after { content: ""; position: absolute; left: 45%; top: -3px; bottom: -3px; border-left: 1px solid var(--fg); } /* landing reserve */
 .bar i { display: block; height: 100%; width: 100%; background: var(--accent); }
 
 .controls {
@@ -147,3 +146,17 @@ kbd {
 
 .prompt:hover { background: rgba(217, 197, 90, 0.15); }
 .hero .social a:hover { color: #f3dc6a; filter: drop-shadow(0 0 10px rgba(217, 197, 90, 0.7)); }
+
+/* attribution tag, bottom center under the launch prompt */
+body.home .made-with {
+  position: fixed;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  z-index: 2;
+  white-space: nowrap;
+}
+@media (max-width: 600px) {
+  body.home .made-with { font-size: 10px; bottom: 8px; }
+  .hud, .controls { bottom: 34px; }
+}
