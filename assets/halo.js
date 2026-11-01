@@ -4,7 +4,7 @@
   const canvas = document.getElementById("halo");
   const ctx = canvas?.getContext("2d");
   if (ctx) {
-    const N = 34, LINK = 130, pts = [];
+    const N = 70, LINK = 160, pts = [];
     const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
     let w = 0, h = 0, dpr = 1;
     function resize() {
@@ -16,7 +16,7 @@
     resize();
     addEventListener("resize", resize);
     for (let i = 0; i < N; i++) {
-      pts.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 12, vy: (Math.random() - 0.5) * 12 });
+      pts.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 40, vy: (Math.random() - 0.5) * 40 });
     }
     let last = performance.now();
     function frame(now) {
@@ -33,7 +33,7 @@
         for (let j = i + 1; j < N; j++) {
           const d = Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y);
           if (d > LINK) continue;
-          ctx.strokeStyle = `rgba(217, 197, 90, ${0.6 * (1 - d / LINK)})`;
+          ctx.strokeStyle = `rgba(217, 197, 90, ${0.85 * (1 - d / LINK)})`;
           ctx.beginPath();
           ctx.moveTo(pts[i].x, pts[i].y);
           ctx.lineTo(pts[j].x, pts[j].y);
