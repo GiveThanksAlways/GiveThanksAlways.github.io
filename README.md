@@ -1,28 +1,22 @@
-# My GitHub portfolio
+# givethanksalways.github.io
 
-just setting up my portfolio based on [portfolYOU](https://YoussefRaafatNasry.github.io/portfolYOU/docs/)
-
-## local dev
-
-[template doc steps (super helpful)](https://youssefraafatnasry.github.io/portfolYOU/docs/)
-[particleground](https://github.com/jnicol/particleground)
-[particleGround-Portfolio](https://github.com/itsron143/ParticleGround-Portfolio)
+Personal site. Plain static HTML/CSS/JS, no build step; GitHub Pages serves it as-is (`.nojekyll`).
 
 ```bash
-# ruby -v
-# bundle -v
-# served on http://127.0.0.1:4000/
-bundle install
-bundle exec jekyll serve
+python3 -m http.server 4000   # http://localhost:4000
 ```
 
-## Blog
+| Path | What |
+|---|---|
+| `index.html`, `assets/launch.js`, `assets/home.css` | Landing page: three.js rocket you can launch/steer/land (three.js from jsDelivr via importmap) |
+| `projects/index.html` | Top projects (edit the list directly) |
+| `posts/index.html`, `assets/posts.js` | X timeline, falling back to pinned post IDs in `posts.js` |
+| `resume/index.html`, `assets/resume.tex` | Resume; rebuild the PDF from the `.tex` and replace `assets/Resume_Spencer_Willett.pdf` |
+| `assets/telemetry.js` | Cookieless GoatCounter analytics + public visitor count |
+| `assets/icons.svg` | Social icon sprite (Font Awesome Free brands, CC BY 4.0) |
+| `about/`, `blog/` | Redirects for old URLs |
 
-make new post
+## GoatCounter setup
 
-```bash
-# will ask for title, then creates a .md file in _posts/ with the correct date format in the filename
-./makeNewPost.sh
-```
-
-[favicon maker](https://favicon.io/favicon-converter/)
+1. Sign up at <https://www.goatcounter.com> with the site code `givethanksalways`.
+2. Settings → enable **"Allow adding visitor counts on your website"**.

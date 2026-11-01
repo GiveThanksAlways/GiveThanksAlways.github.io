@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Posts · Spencer Willett</title>
+  <meta name="description" content="Recent posts from Spencer Willett on X.">
+  <link rel="icon" href="/assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <svg viewBox="0 0 24 24"><path d="M12 2 21 7v10l-9 5-9-5V7zM12 2 7 15h10zM3 7l4 8M21 7l-4 8M7 15l5 7 5-7"/></svg>
+      Spencer Willett
+    </a>
+    <nav class="nav">
+      <a href="/projects/">Projects</a>
+      <a href="/posts/" aria-current="page">Posts</a>
+      <a href="/resume/">Resume</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <h1>Posts</h1>
+    <p class="lede">What I've been posting on X.</p>
+    <a class="button" href="https://x.com/BeGrateful180"><svg><use href="/assets/icons.svg#x"/></svg>@BeGrateful180</a>
+
+    <section class="feed" id="feed">
+      <!-- Tries X's live timeline first; if X won't render it (common for logged-out
+           visitors), falls back to the pinned post IDs listed in /assets/posts.js. -->
+      <a class="twitter-timeline" data-theme="dark" data-chrome="noheader nofooter noborders transparent"
+         data-height="1200" data-dnt="true" href="https://twitter.com/BeGrateful180">Loading posts…</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <nav class="social small" aria-label="Social links">
+      <a href="https://github.com/GiveThanksAlways" aria-label="GitHub"><svg><use href="/assets/icons.svg#github"/></svg></a>
+      <a href="https://x.com/BeGrateful180" aria-label="X"><svg><use href="/assets/icons.svg#x"/></svg></a>
+      <a href="https://www.twitch.tv/givethanksalways180" aria-label="Twitch"><svg><use href="/assets/icons.svg#twitch"/></svg></a>
+      <a href="https://www.youtube.com/@givethanksalways180" aria-label="YouTube"><svg><use href="/assets/icons.svg#youtube"/></svg></a>
+      <a href="https://www.linkedin.com/in/spencer-willett" aria-label="LinkedIn"><svg><use href="/assets/icons.svg#linkedin"/></svg></a>
+    </nav>
+    <span>visitors · <span data-visitors>…</span></span>
+  </footer>
+  <script src="/assets/telemetry.js" defer></script>
+  <script src="/assets/posts.js" defer></script>
+</body>
+</html>
